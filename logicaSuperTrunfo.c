@@ -1,6 +1,18 @@
 #include <stdio.h>
-//Nivel Novato
+//Niver Intermediario
 int main (){
+//menu interativo
+
+int opcao;
+
+    printf("Menu principal:\n");
+    printf("1. Iniciar jogo\n");
+    printf("2. Ver regras\n");
+    printf("3. Sair\n");
+    printf("Escolha uma opção: \n");
+    scanf("%d", &opcao);
+
+
 //aqui começam as declarações de variaveis
 char Estado1 [20] ;
 char Codigo_da_carta1 [20] ;
@@ -19,8 +31,13 @@ double area_em_km2 , PIB2 , Populacao2;
 double densidadepop2;
 double pibp2;
 float superpoder2;
+double resultadodensidade, resultadopibp;
 
 //inseri uma mensagem inicial
+
+switch (opcao){
+
+    case 1:
 printf("Bem vindo ao Super Trunfo!\n");
 printf("Digite as informações da sua primeira carta\n");
 
@@ -119,39 +136,57 @@ printf("Super Poder: %f\n", superpoder2);
 printf(" \n");
 
 //aqui começam as comparações entre as cartas
+printf("##### COMPARANDO AS CARTAS #####\n");
+if (Populacao1>Populacao2) {printf("População: A carta 1 é a vencedora!\n");} 
+else if (Populacao1<Populacao2) {printf("População: A carta 2 é a vencedora!\n");}
+else {printf("População:Empate!\n");}
 
-if (Populacao1>Populacao2){
-    printf("A carta 1 é a vencedora!\n");
-} else {
-    printf("A carta 2 é a vencedora!\n");
-}
-if (area_em_km1>area_em_km2){
-    printf("A carta 1 é a vencedora!\n");
-} else {
-    printf("A carta 2 é a vencedora!\n");
-}
-if (PIB1>PIB2){
-    printf("A carta 1 é a vencedora!\n");
-} else {
-    printf("A carta 2 é a vencedora!\n");
-}
-if (Numero_de_pontos_turisticos1>Numero_de_pontos_turisticos2){
-    printf("A carta 1 é a vencedora!\n");
-} else {
-    printf("A carta 2 é a vencedora!\n");
-}
-if (superpoder1>superpoder2){
-    printf("A carta 1 é a vencedora!\n");
-} else {
-    printf("A carta 2 é a vencedora!\n");
-}
+if (area_em_km1>area_em_km2) {printf("Área: A carta 1 é a vencedora!\n");} 
+else if (area_em_km1<area_em_km2) {printf("Área: A carta 2 é a vencedora!\n");}
+else {printf("Área:Empate!\n");}
 
-printf("Densidade Populacional: %d\n", 
-    (float)(Populacao1/area_em_km1)<(Populacao2/area_em_km2));
+if (PIB1>PIB2){printf("PIB: A carta 1 é a vencedora!\n");} 
+else if (PIB1<PIB2) {printf("PIB: A carta 2 é a vencedora!\n");}
+else {printf("PIB:Empate!\n");}
+
+if (Numero_de_pontos_turisticos1>Numero_de_pontos_turisticos2){printf("Número de Pontos Turísticos: A carta 1 é a vencedora!\n");} 
+else if (Numero_de_pontos_turisticos1<Numero_de_pontos_turisticos2) {printf("Número de Pontos Turísticos: A carta 2 é a vencedora!\n");}
+else {printf("Número de Pontos Turísticos:Empate!\n");}
+
+if (superpoder1>superpoder2){printf("Super Poder: A carta 1 é a vencedora!\n");} 
+else if (superpoder1<superpoder2) {printf("Super Poder: A carta 2 é a vencedora!\n");}
+else {printf("Super Poder:Empate!\n");}
+
+
+    resultadodensidade = (Populacao1/area_em_km1) < (Populacao2/area_em_km2) ? 1 : 0;
+    if (resultadodensidade == 0) {printf("Densidade Populacional: A carta 1 é a vencedora!\n");} 
+    else if (resultadodensidade == 1) {printf("Densidade Populacional: A carta 2 é a vencedora!\n");}
+    else {printf("Densidade Populacional:Empate!\n");}
     
-printf("PIB per Capita: %d\n", 
-    (float)(PIB1/Populacao1)>(PIB2/Populacao2));
 
+    resultadopibp = (PIB1/Populacao1) > (PIB2/Populacao2) ? 1 : 0;
+    if (resultadopibp == 1) {printf("PIB per Capita: A carta 1 é a vencedora!\n");} 
+    else if (resultadopibp == 0) {printf("PIB per Capita: A carta 2 é a vencedora!\n");}
+    else {printf("PIB per Capita:Empate!\n");}
+
+    break; //pausei o switch
+
+    //outra opções switch
+case 2:
+    printf("Regras do jogo:\n");
+    printf("1. Cada jogador deve criar duas cartas com informações de cidades.\n");
+    printf("2. As cartas serão comparadas com base em diferentes atributos\n");
+    printf("3. O jogador com a carta que tiver o maior valor em cada atributo ganha.\n");
+    printf("4. O jogador que ganhar mais atributos é o vencedor do jogo.\n");
+    break;
+
+case 3:
+    printf("Saindo do jogo...\n");
+    break;
+
+default:
+    printf("Opção inválida. Por favor, escolha uma opção válida.\n");
+}
 
 return 0;
 }
